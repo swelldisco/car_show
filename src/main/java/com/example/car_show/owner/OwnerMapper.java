@@ -1,5 +1,6 @@
 package com.example.car_show.owner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.car_show.car.Car;
@@ -15,15 +16,23 @@ public class OwnerMapper {
     }
 
     private List<Car> mapListToCar(List<CarDto> source) {
-        return source.stream()
+        if (source != null) {
+            return source.stream()
             .map(c -> mapper.mapToCar(c))
             .toList();
+        } else {
+            return new ArrayList<Car>();
+        }
     }
 
     private List<CarDto> mapListToCarDto(List<Car> source) {
-        return source.stream()
+        if (source != null) {
+            return source.stream()
             .map(c -> mapper.mapToDto(c))
             .toList();
+        } else {
+            return new ArrayList<CarDto>();
+        }
     }
     
     public Owner mapToOwner(OwnerDto source) {

@@ -1,5 +1,6 @@
 package com.example.car_show.owner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.car_show.car.CarDto;
@@ -19,6 +20,7 @@ public class OwnerDto {
     public OwnerDto(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        cars = new ArrayList<>();
     }
 
     public OwnerDto(OwnerDto source) {

@@ -24,31 +24,31 @@ public class OwnerController {
         this.service = service;
     }
 
-    // http://127.0.0.1:8085/api/v1/owners/create
+    // http://127.0.0.1:8085/api/v1/owner/create
     @PostMapping("/create")
     public ResponseEntity<OwnerDto> createUser(@RequestBody OwnerDto ownerDto) {
         return new ResponseEntity<>(service.createOwner(ownerDto), HttpStatus.CREATED);
     }
 
-    // http://127.0.0.1:8085/api/v1/owners/1
+    // http://127.0.0.1:8085/api/v1/owner/1
     @GetMapping("/{ownerId}")
     public ResponseEntity<OwnerDto> getOwnerById(@PathVariable int ownerId) {
         return new ResponseEntity<>(service.getOwnerById(ownerId), HttpStatus.OK);
     }
 
-    // http://127.0.0.1:8085/api/v1/owners/all
+    // http://127.0.0.1:8085/api/v1/owner/all
     @GetMapping("/all")
     public ResponseEntity<List<OwnerDto>> getAllOwners() {
         return new ResponseEntity<>(service.getAllOwners(), HttpStatus.OK);
     }
 
-    // http://127.0.0.1:8085/api/v1/owners/1
+    // http://127.0.0.1:8085/api/v1/owner/1
     @PutMapping("/{ownerId}")
     public ResponseEntity<OwnerDto> updateOwner(@PathVariable int ownerId, @RequestBody OwnerDto ownerDto) {
         return new ResponseEntity<>(service.updateOwner(ownerId, ownerDto), HttpStatus.ACCEPTED);
     }
 
-    // http://127.0.0.1:8085/api/v1/owners/1
+    // http://127.0.0.1:8085/api/v1/owner/1
     @DeleteMapping("/{ownerId}")
     public ResponseEntity<HttpStatus> deleteOwner(@PathVariable int ownerId) {
         service.deleteOwnerById(ownerId);
