@@ -68,9 +68,9 @@ public class OwnerController {
         return new ResponseEntity<>(service.ditchCar(carId, ownerId), HttpStatus.ACCEPTED);
     }
 
-    // http://127.0.0.1:8085/api/v1/owner/transfer/{carId}/{giverId}/{receiverId}
+    // http://127.0.0.1:8085/api/v1/owner/transfer?carId=1&giverId=1&receiverId=2
     @PutMapping("/transfer")
-    public ResponseEntity<HttpStatus> transferCar(@PathVariable int carId, @PathVariable int giverId, @PathVariable int receiverId) {
+    public ResponseEntity<HttpStatus> transferCar(@RequestParam int carId, @RequestParam int giverId, @RequestParam int receiverId) {
         service.transferOwnership(carId, giverId, receiverId);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
