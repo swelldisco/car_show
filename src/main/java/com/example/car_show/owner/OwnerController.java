@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/owners")
+@RequestMapping("/api/v1/owner")
 public class OwnerController {
     
     private final OwnerService service;
