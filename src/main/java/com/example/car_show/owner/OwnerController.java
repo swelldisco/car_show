@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -53,6 +54,25 @@ public class OwnerController {
     public ResponseEntity<HttpStatus> deleteOwner(@PathVariable int ownerId) {
         service.deleteOwnerById(ownerId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    // http://127.0.0.1:8085/api/v1/owner/claim?carId=1
+    @PutMapping("/claim")
+    public ResponseEntity<OwnerDto> claimCar(@RequestParam int carId, int ownerId) {
+        return new ResponseEntity<>(service.claimCar(carId, ownerId), HttpStatus.ACCEPTED);
+    }
+
+    // http://127.0.0.1:8085/api/v1/owner/ditch?carId=1
+    @PutMapping("/ditch")
+    public ResponseEntity<OwnerDto> ditchCar(@RequestParam int carId, int ownerId) {
+        return new ResponseEntity<>(service.ditchCar(carId, ownerId), HttpStatus.ACCEPTED);
+    }
+
+    // http://127.0.0.1:8085/api/v1/owner/transfer/{carId}/{giverId}/{receiverId}
+    @PutMapping("/transfer")
+    public ResponseEntity<HttpStatus> transferCar(@PathVariable int carId, @PathVariable int giverId, @PathVariable int receiverId) {
+        service.transferOwnership(carId, giverId, receiverId);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
     
 

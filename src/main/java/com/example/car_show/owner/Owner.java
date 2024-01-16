@@ -84,5 +84,13 @@ public class Owner {
         this.cars = cars;
     }
 
+    public void addCarToList(Car car) {
+        cars.add(car);
+    }
+
+    public void removeCarFromList(Car car) {
+        cars.remove(car);
+    }
+
     
 }
