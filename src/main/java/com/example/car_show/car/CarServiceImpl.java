@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class CarServiceImpl implements CarService{
 
@@ -29,9 +31,6 @@ public class CarServiceImpl implements CarService{
         return repo.findAll().stream()
             .map(c -> mapper.mapToDto(c))
             .toList();
-        // return StreamSupport.stream(repo.findAll().spliterator(), false)
-        //     .map(c -> mapper.mapToDto(c))
-        //     .toList();
     }
 
     @Override
@@ -79,13 +78,13 @@ public class CarServiceImpl implements CarService{
         if (repo.existsByCarId(carId)) {
             repo.deleteByCarId(carId);
         } else {
-            throw new NullPointerException("No Such Id");
+            throw new EntityNotFoundException("Car with " + carId + " not found.");
         }
     }
 
     
     private Car testOptionalCarById(int carId) {
         return repo.findById(carId)
-            .orElseThrow(() -> new NullPointerException());
+            .orElseThrow(() -> new EntityNotFoundException("Car with " + carId + " not found."));
     }
 }

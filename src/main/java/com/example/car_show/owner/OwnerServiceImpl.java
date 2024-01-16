@@ -2,6 +2,11 @@ package com.example.car_show.owner;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import jakarta.persistence.EntityNotFoundException;
+
+@Service
 public class OwnerServiceImpl implements OwnerService{
     
     private final OwnerRepository repo;
@@ -31,14 +36,19 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public OwnerDto updateOwner(int ownerId, OwnerDto ownerDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateOwner'");
+        Owner updatedOwner = checkOptionalOwnerById(ownerId);
+        updatedOwner.setFirstName(ownerDto.getFirstName());
+        updatedOwner.setLastName(ownerDto.getLastName());
+        return mapper.mapToDto(repo.save(updatedOwner));
     }
 
     @Override
     public void deleteOwnerById(int ownerId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteOwnerById'");
+        if (repo.existsByOwnerId(ownerId)) {
+            deleteOwnerById(ownerId);
+        } else {
+            throw new EntityNotFoundException("Owner with id " + ownerId + " does not exist.");
+        }
     }
 
     private Owner checkOptionalOwnerById(int ownerId) {

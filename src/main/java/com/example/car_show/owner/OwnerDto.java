@@ -2,7 +2,7 @@ package com.example.car_show.owner;
 
 import java.util.List;
 
-import com.example.car_show.car.Car;
+import com.example.car_show.car.CarDto;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ public class OwnerDto {
     private int ownerId;
     private String firstName;
     private String lastName;
-    private List<Car> cars;
+    private List<CarDto> cars;
 
     public OwnerDto(String firstName, String lastName) {
         this.firstName = firstName;
@@ -52,11 +52,11 @@ public class OwnerDto {
         this.lastName = lastName;
     }
 
-    public List<Car> getCars() {
+    public List<CarDto> getCars() {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
+    public void setCars(List<CarDto> cars) {
         this.cars = cars;
     }
 

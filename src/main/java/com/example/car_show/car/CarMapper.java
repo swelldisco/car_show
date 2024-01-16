@@ -4,7 +4,7 @@ public class CarMapper {
     
     public CarDto mapToDto(Car source) {
         return new CarDto(
-            source.getCardId(),
+            source.getCarId(),
             source.getMake(),
             source.getModel(),
             source.getColor(),
@@ -17,7 +17,7 @@ public class CarMapper {
 
     public Car mapToCar(CarDto source) {
         return new Car(
-            source.getCardId(),
+            source.getCarId(),
             source.getMake(),
             source.getModel(),
             source.getColor(),

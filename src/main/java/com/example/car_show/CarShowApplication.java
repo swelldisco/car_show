@@ -33,9 +33,10 @@ public class CarShowApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
+		Owner billy = new Owner("Billy", "Bob");
+		Owner jim = new Owner("Jim", "Bob");
 		List<Owner> owners = Arrays.asList(
-			new Owner("Billy", "Bob"),
-			new Owner("Jim", "Bob")
+			billy, jim
 		);
 
 		for (Owner owner : owners) {
@@ -44,10 +45,10 @@ public class CarShowApplication implements CommandLineRunner {
 
 		
 		List<CarDto> cars = Arrays.asList(
-			new CarDto("Ford","Lighting","Gray","FL-234",2023,75000),
-			new CarDto("Nissan","Leaf","Green","BFG-345",2022,40000),
-			new CarDto("Toyota","Sienna","Silver","CDF-233",2024,60000),
-			new CarDto("Honda","Accord","White","HW-345",2024,57000)
+			new CarDto("Ford","Lighting","gray","FL-234",2023,75000, billy),
+			new CarDto("Nissan","Leaf","green","BFG-345",2022,40000, billy),
+			new CarDto("Toyota","Sienna","silver","CDF-233",2024,60000, jim),
+			new CarDto("Honda","Accord","white","HW-345",2024,57000, jim)
         );
 
 		for (CarDto dto : cars) {

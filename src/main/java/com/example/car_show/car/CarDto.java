@@ -35,13 +35,9 @@ public class CarDto {
     private String plateNumber;
 
     @NotNull(message = "Year cannot be null")
-    @NotBlank(message = "Year cannot be left blank")
-    @NotEmpty(message = "Year cannot be left empty")
     private int year;
 
-    @NotNull(message = "Year cannot be null")
-    @NotBlank(message = "Year cannot be left blank")
-    @NotEmpty(message = "Year cannot be left empty")
+    @NotNull(message = "price cannot be null")
     private double price;
 
     private Owner carOwner;
@@ -76,7 +72,7 @@ public class CarDto {
         this.carOwner = source.carOwner;
     }
 
-    public int getCardId() {
+    public int getCarId() {
         return carId;
     }
 

@@ -79,7 +79,7 @@ public class Car {
         this.carOwner = source.carOwner;
     }
 
-    public int getCardId() {
+    public int getCarId() {
         return carId;
     }
 
