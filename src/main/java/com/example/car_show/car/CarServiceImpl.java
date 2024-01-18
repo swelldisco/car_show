@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.EntityNotFoundException;
+import com.example.car_show.exceptions.ResourceNotFoundException;
 
 @Service
 public class CarServiceImpl implements CarService{
@@ -78,13 +78,13 @@ public class CarServiceImpl implements CarService{
         if (repo.existsByCarId(carId)) {
             repo.deleteByCarId(carId);
         } else {
-            throw new EntityNotFoundException("Car with " + carId + " not found.");
+            throw new ResourceNotFoundException("Car with " + carId + " not found.");
         }
     }
 
     
     private Car testOptionalCarById(int carId) {
         return repo.findById(carId)
-            .orElseThrow(() -> new EntityNotFoundException("Car with " + carId + " not found."));
+            .orElseThrow(() -> new ResourceNotFoundException("Car with " + carId + " not found."));
     }
 }
