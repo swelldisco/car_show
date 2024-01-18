@@ -14,10 +14,14 @@ import com.example.car_show.car.CarDto;
 import com.example.car_show.car.CarService;
 import com.example.car_show.owner.Owner;
 import com.example.car_show.owner.OwnerRepository;
+import com.example.car_show.users.User;
+import com.example.car_show.users.UserRepository;
 
 
 @SpringBootApplication
 public class CarShowApplication implements CommandLineRunner {
+	@Autowired
+	private UserRepository userRepo;
 
 	@Autowired
 	private OwnerRepository ownerRepo;
@@ -54,6 +58,11 @@ public class CarShowApplication implements CommandLineRunner {
 		for (CarDto dto : cars) {
 			carService.createCar(dto);
 		}
+
+		// username: billyBob@gmail.com password: adminPassword
+		userRepo.save(new User("billyBob@gmail.com", "$2y$10$SspdgMpgPbk4a2AKMu9tZOp6LuBiXb0ULqTliP5jRMyJkpmPiKni2", "ADMIN"));
+		// username: Jimbob@gmail.com password: userPassword
+		userRepo.save(new User("Jimbob@gmail.com", "$2y$10$tmFYO08YRViFgfmzAP4rdudHs/DXgbVaPBbNqeNPdl6OEpBgyC3i2", "USER"));
 	 }
 
 }
