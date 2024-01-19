@@ -27,4 +27,17 @@ public class CarMapper {
             source.getOwner()
         );
     }
+
+    // public Car mapToCar(CarDto source) {
+    //     return new Car(
+    //         source.carId(),
+    //         source.make(),
+    //         source.model(),
+    //         source.color(),
+    //         source.plateNumber(),
+    //         source.year(),
+    //         source.price(),
+    //         source.owner()
+    //     );
+    // }
 }

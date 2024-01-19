@@ -18,17 +18,19 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 public class JWTService {
     private static final Logger LOGGER = LoggerFactory.getLogger(JWTService.class);
+    // for the love of god, check the documentation to make sure the algorithm is actually provided for KeyGenerator before setting it
+    private static final String ALGORITHM = "HmacSHA256";
     private static final long EXPIRATION_TIME = 86400000L;
-    private static final String PREFIX ="Bearer";
+    private static final String PREFIX ="Bearer ";
     private static final SecretKey KEY = (SecretKey)generateSecretKey();
 
     private static Key generateSecretKey() {
         try{
-            KeyGenerator plzGifKey =  KeyGenerator.getInstance("HmacSHA256");
+            KeyGenerator plzGifKey =  KeyGenerator.getInstance(ALGORITHM);
             plzGifKey.init(256);
             return plzGifKey.generateKey();
         } catch (NoSuchAlgorithmException ex) {
-            LOGGER.warn("Algorithm HmacSHA256 is missing for some reason, and Java KeyGenerator documentation says it should not be.");
+            LOGGER.warn("The algorithm " + ALGORITHM + " is missing for some reason, and Java KeyGenerator documentation says it should not be.");
             ex.printStackTrace();
             return null;
         }
