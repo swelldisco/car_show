@@ -41,8 +41,8 @@ public class SecurityConfiguration {
                 .cors(Customizer.withDefaults())
                 .csrf(c -> c.disable())
                 .authorizeHttpRequests(
-                       auth ->auth.
-                                requestMatchers(HttpMethod.POST,"/login").permitAll()
+                       auth ->auth
+                                .requestMatchers(HttpMethod.POST,"/login").permitAll()
                                 // .requestMatchers(HttpMethod.GET, "/api/v1/car/*").hasAnyRole("USER", "ADMIN")
                                 // .requestMatchers(HttpMethod.POST, "/api/v1/car/create").hasRole("ADMIN")
                                .anyRequest()
