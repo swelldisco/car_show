@@ -3,7 +3,6 @@ package com.example.car_show.car;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.car_show.exceptions.ResourceNotFoundException;
 
