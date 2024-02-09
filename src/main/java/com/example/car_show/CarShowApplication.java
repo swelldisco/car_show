@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.car_show.car.CarDto;
 import com.example.car_show.car.CarService;
@@ -17,7 +18,7 @@ import com.example.car_show.owner.OwnerRepository;
 import com.example.car_show.users.User;
 import com.example.car_show.users.UserRepository;
 
-
+@CrossOrigin(origins = "http://127.0.0.1:5173", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
 @SpringBootApplication
 public class CarShowApplication implements CommandLineRunner {
 	@Autowired

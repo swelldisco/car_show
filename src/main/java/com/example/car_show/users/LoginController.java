@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authManager;
 
+    @CrossOrigin(origins = "http://127.0.0.1:5173", exposedHeaders = {"Access-Control-Allow-Origin"})
     @PostMapping("/login")
     public ResponseEntity<?> getToken(@RequestBody AccountCredentials credentials){
         UsernamePasswordAuthenticationToken creds = new UsernamePasswordAuthenticationToken(credentials.getUserName(), credentials.getPassword());
